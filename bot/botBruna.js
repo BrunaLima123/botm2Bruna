@@ -4,19 +4,22 @@ const bot = new Telegraf(env.token)
 
   bot.start(async ctx => {
     const from = ctx.update.message.from
-    if (from.id != ' 1351450134') {
-      ctx.reply(
-        `SAI ${from.first_name} ${from.last_name}!! Só falo com a Bruna ou o professor Emerson u.u`
-      )
-    } else {
+    if (from.id == ' 1351450134' || from.id == '5416120477') {
+      
    await ctx.replyWithHTML(`<b>Seja bem vindo(a)</b> ${from.first_name}! 
         Eu sou o botLivros de Nicholas Sparks! Prazer em conhecer você!`)
         
         await ctx.reply(
-            'Primeiramente, me diga, o que deseja fazer?',
+            'Primeiramente, me diga, o que deseja fazer? Conversar, ou Livros? Pode clicar na opção se preferir, ou digitar.',
             Markup.keyboard(['Livros', 'Conversar']).resize().oneTime()
           )
-        }})
+      
+      } else {
+        ctx.reply(
+          `SAI ${from.first_name} ${from.last_name}!! Só falo com a Bruna ou o professor Emerson u.u`
+        )
+      }})
+     
 
         bot.hears(['Livros'], async ctx => {
         await ctx.replyWithHTML(`Posso pesquisar livros do autor, por título! Basta me dizer qual livro da lista você deseja pesquisar.
@@ -33,6 +36,19 @@ const bot = new Telegraf(env.token)
         Uma carta de amor
         O guardião
         </code>      `)
+        await ctx.reply(
+          'Se quiser também, me diga através do teclado usando os emojis indicados, qual bebida você gosta para acompanhar uma leitura?',
+          Markup.keyboard(['☕', '🥛','🍺','🍷']).resize().oneTime()
+        )
+
+        bot.hears('☕', ctx=>{ ctx.replyWithHTML('<b>Café! Show, ótima combinação!</b> Sabia que ambos são bons para a memória e a leitura, em particular, previne doenças mentais que envolvem, sobretudo, o esquecimento (como o Alzheimer)? Legal né?! Agora, digite o que deseja novamente: Livros, Conversar ou me diga mais uma bebida que você gosta!')
+        })
+        bot.hears('🥛', ctx=>{ ctx.replyWithHTML('<b>Leite! Legal!</b> Sabia que Leite e produtos lácteos são fontes de cálcio, fósforo, magnésio e proteínas, que são essenciais para o crescimento e o desenvolvimento saudável dos ossos. O consumo adequado destas substâncias desde a infância e na vida adulta pode ajudar a tornar os ossos mais fortes e protegê-los contra doenças como a osteoporose? Legal né?! Agora, digite o que deseja novamente: Livros, Conversar ou me diga mais uma bebida que você gosta!')
+        })
+        bot.hears('🍺', ctx=>{ ctx.replyWithHTML('<b>Cerveja! Hummmm, interessante!</b> Sabia que a cerveja tem vários beneficios, e alguns deles são: Protege o cérebro, combate o estresse, aumenta a imunidade, fortalece os ossos, mantém os rins saudáveis, entre outros.... Legal né?! Agora, digite o que deseja novamente: Livros, Conversar ou me diga mais uma bebida que você gosta!')
+        })
+        bot.hears('🍷', ctx=>{ ctx.replyWithHTML('<b>Vinho! Que chique!</b> Sabia que Pesquisadores apontam que o consumo moderado de vinho tinto, duas taças ao dia, pode reduzir em até 20% o risco de doenças cardíacas? Isso porque, o vinho tinto é rico em polifenóis, substâncias presentes na casca da uva, que aumentam os níveis de colesterol bom!! Legal né?! Agora, digite o que deseja novamente: Livros, Conversar ou me diga mais uma bebida que você gosta!')
+        })
         
         bot.hears('Querido John', ctx => {
             ctx.replyWithHTML('<b> Ótima escolha, leia agora mesmo! </b> <a href="https://www.amazon.com.br/Querido-John-Sparks-Nicholas/dp/8563219022"> Querido John </a>')
