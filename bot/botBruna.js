@@ -4,7 +4,7 @@ const bot = new Telegraf(env.token)
 
   bot.start(async ctx => {
     const from = ctx.update.message.from
-    if (from.id != '5416120477') {
+    if (from.id != ' 1351450134') {
       ctx.reply(
         `SAI ${from.first_name} ${from.last_name}!! Só falo com a Bruna ou o professor Emerson u.u`
       )
