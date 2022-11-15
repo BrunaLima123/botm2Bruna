@@ -20,7 +20,7 @@ const bot = new Telegraf(env.token)
 
         bot.hears(['Livros'], async ctx => {
         await ctx.replyWithHTML(`Posso pesquisar livros do autor, por título! Basta me dizer qual livro da lista você deseja pesquisar.
-        Ei, para facilitar, favor digitar certinho como está escrito na lista, pois estou na fase de aprendizagem ainda, valeu :)
+        <i> Ei, para facilitar, favor digitar certinho como está escrito na lista, pois estou na fase de aprendizagem ainda, valeu :) </i> 
         Segue os top 10!
         <code>     Querido John
         Um amor para recordar
